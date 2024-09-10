@@ -1,0 +1,99 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(CNNNewsApp());
+}
+
+class CNNNewsApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'CNN News Replica',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
+      home: NewsHomePage(),
+    );
+  }
+}
+
+class NewsHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('CNN News Replica'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Título de la Noticia de CNN',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Image.network(
+              'https://cdn.cnn.com/cnnnext/dam/assets/220127071332-cnn-logo-large-169.jpg',
+              fit: BoxFit.cover,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Resumen: Esta es una breve descripción de la noticia de CNN. El contenido de la noticia incluye detalles sobre el evento principal y está diseñado para captar la atención del lector.',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NewsContentPage()),
+                );
+              },
+              child: Text('Leer Más'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NewsContentPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Contenido de la Noticia'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Subtítulo 1: Detalles del evento',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Párrafo explicando los detalles iniciales de la noticia. Aquí puedes agregar todo el contenido del artículo.',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Subtítulo 2: Más información',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Párrafo explicando más detalles y análisis sobre la noticia.',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
